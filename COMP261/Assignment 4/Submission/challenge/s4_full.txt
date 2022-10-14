@@ -1,0 +1,10 @@
+$Add = 1 + 15;
+$Sub = 64 - 19;
+$Mul = 8 * 8;
+$Div = 16 / (4 + (barrelLR(numBarrels - numBarrels)));
+if (1 == 1 || (true && ! false)) {
+	while ((4 >= 4) && 4 > 4) {
+		turnL;
+	}
+	move(5);
+}

@@ -1,0 +1,48 @@
+Comp 261
+Assignment 3
+William Kilty
+
+I believe I have achieved all the tasks set out in the handout,
+and have cross referenced with the mark sheet supplied.
+Everything from stage 1 to 4 is present.
+
+My program displays the data on a screen which can be altered with the mouse through the spectrum table.
+
+____________________________________________________________
+
+Times taken for slow fourier on brass.wav:
+DFT:  992.855 seconds
+IDFT: 967.502 seconds
+
+102284 samples
+
+Based on this, and knowing the slow fourier systems are O(n^2); I could do some calculations to estimate 
+how long the fast times should be.
+
+	(102284^2)/992.855 = 10,537,305.71 samples per second.
+	The fast method is O(nlog(n))
+	(102284 log(102284))/10,537,305.71 = 0.112 seconds.
+
+Needless to say, the faster method should be insanely fast. This calculation won't be entirely accurate, 
+as O notation doesn't take into account all factors and the fast method will have a smaller sample size (pow 2).
+But this should certainly be within the realm of accuracy.
+
+FFT:  0.373 seconds
+IFFT: 0.350 seconds
+
+Sure enough, almost spot on with the estimate. This faster method is infinitely more applicable. 
+Usable in many many more circumstances. Where the large files could take weeks with the old method,
+they should take a mere second or two with the new method.
+
+The new method is 2661.8 times faster than the old method in the forwards direction
+and 2764.3 times faster for the inverse method.
+
+____________________________________________________________
+
+I tested my program through lots of debugging output text. Printing what the program was doing at each step of the fourier transform
+to make sure everything it did made sense and gave a reasonable answer. I got it to print how many samples it was using, how many
+were trimmed, etc. to make sure things were going as planned. Most of this debugging text was removed as it slows things down and
+generally clutters up the screen. But a few things remained as I felt they were unobtrusive and provided some useful data.
+
+In the end, I think I've sufficiently tested enough to say I'm confident there aren't any agregious bugs and I'm fairly certain
+it does what it sets out to do correctly.

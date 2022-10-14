@@ -1,0 +1,100 @@
+Comp 261
+Assignment 2
+William Kilty
+
+I believe I have achieved almost all the tasks set out in the handout,
+and have cross referenced with the mark sheet supplied.
+Everything from minimum to most of challenge is present.
+The only thing I did not do was find traffic light data online.
+
+My program displays the data on a screen which can be panned and zoomed with the mouse.
+
+____________________________________________________________
+
+The main search function of the program has two settings; distance and time; which work almost
+identically except for a different method for getting the 'g' value and 'f' value.
+
+First it checks to see that a seperate destination and departure point have been selected.
+If so, continues. If not, stops.
+It then creates a fringe priorityQueue and an empty list of visited nodes.
+start location is offered to the fringe.
+
+then, while the fringe is not empty;
+	takes the first element off the fringe.
+	if it's been visited, start again.
+	mark the node as visited.
+
+	if this is the goal, end searching.
+
+	look through the restrictions to see if this is an issue spot
+		if it is, remove all forbidden segments.
+	
+	for each segment the node can move to;
+		g value:
+			for dist, simply add the previous g to the length of the segment.
+			for time, add the previous g to the length/(speedLimit * ((1 + roadClass)/4)).
+				dividing road class by four makes it a factor, but not a big one.
+				Still looking for fast times primarily.
+		f value:
+			for dist, simply add g to the distance left between this node and the goal.
+			for time, add g to the distance between this node and the goal divided by 125.
+				this value of 125 is a hypothetical road speed of 100km/h and a maximum
+				road class/4 as with g. This means we're always going to underestimate the actual distance.
+				Unless you have a road with 110 or unlimited speed limit.
+				But this doesn't matter, as roads that big and fast are never in tight networks,
+				favouring those roads too much is fine.
+		if it hasn't visited the node at the other end of the segment, add it to the queue.
+
+Then we backtrack through the path from the goal, using the segments selected by the queue.
+When we get to a node with no previous segment, we've found either the correct path, or there was no possible path.
+If it was unsuccessful, we print that out and stop.
+If it found a path, highlight all the segments and print the distances and time taken on each contiguous stretch of road.
+Then print the total time and total distance, to allow easy comparing between the different settings.
+
+__________________________________________________________
+
+The articulation points function finds every single articulation point in a graph, even if that graph is disconnected.
+
+First, we reset every node's depth, reachback, and list of children.
+Then, for every node in the graph;
+	if we've already visited it, move on to the next node.
+	set the depth of this root node to 0.
+	for every neighbour of the root
+		if it's unexplored
+			perform the iterative method
+			increase the number of subtrees of the root.
+		if the num of subtrees is more than one, add the root to the list of articulation points.
+
+the iterative method takes in the neighbour (first) node, the root node, and the depth of 1.
+	creates a stack and puts itself on top.
+	then, while the stack is not empty;
+		look at the top element.
+		if the element is unexplored
+			give it a depth and reachback one more than its parent's depth
+			make a list of all its neighbours that aren't it's parent. (children)
+		otherwise, if it has children
+			take a child from the list, removing it from its children
+			if the child has been explored;
+				set the element's reachback to the min of itself and the depth of the child.
+			otherwise add the child onto the stack.
+		otherwise if there are no children left of the element;
+			as long as it isn't the first element, set its parent's reachback to the min of its own and the element's.
+			if the element's reachback is greater than it's parent's depth, then it has no other path to parents of it's parent,
+			so the parent must be an articulation point. add it to the list.
+			then remove the element from the stack. We're done here.
+
+Then simply draw all the articulation points to the screen.
+
+__________________________________________________________
+
+I tested my program through lots of debugging output text. printing how many articulation points were found 
+or how many paths were searched during A* and such. Lots of colouring different nodes based on debug output.
+I fed in specific examples to test tricky cases to prove my time method took less time to get places and my distance
+method took longer but went the shortest path no matter what.
+
+The biggest design hurdle was figuring out how much to weigh the road classes against speed limits.
+Too much and it would be really slow, too little and you'd go fast but through lots of small residential streets.
+In the end I found a nice balance that I think looks realistic and is still significantly faster than the shortest distance.
+
+In the end, I think I've sufficiently tested enough to say I'm confident there aren't any agregious bugs and I'm fairly certain
+it does what it sets out to do correctly.

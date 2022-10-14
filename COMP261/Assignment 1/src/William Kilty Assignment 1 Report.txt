@@ -1,0 +1,40 @@
+Comp 261
+Assignment 1
+William Kilty
+
+I believe I have achieved all the tasks set out in the handout,
+and have cross referenced with the mark sheet supplied.
+Everything from minimum to challenge is present.
+The only thing I did not do was the drop-down suggestion box for search results.
+
+My program displays the data on a screen which can be panned and zoomed.
+The mouse can pan and the scroll wheel can zoom as well as the buttons provided.
+
+Stops can be selected with the mouse, using a quad tree which I will describe later.
+A final boolean field can switch the quad tree off and display my 'Core' implementation if required.
+Stops can also be selected via typing in the search box. This will update on every character input,
+and will use a trie - as described later - to show all stops containing the input prefix, 
+or act like the mouse-select if only one match is found.
+
+A trie is a data tree, in which the nodes correspond with a single character.
+A stop's name is passed into the trie on loading, and a node per letter of the input String is created.
+Upon reaching the final character, the stop itself will be supplied to the node corresponding to that character.
+This is done for all stops upon load, and the trie is then set in stone.
+When a String is provided to the trie, it will be broken down into a char array, and each char will move the target 
+node further into the trie. Upon exhausting the prefix, it will check to see if this is a full name of a stop.
+If it is, it supplies only that stop. Otherwise it provides every single stop contained within the current node's
+sub nodes. This allows quick searching without having to even look at stops excluded from the prefix.
+
+A quad tree is a system of breaking the display up into chunks of high and low density, based on clustering of data.
+A good visualisation can be found within my program when the field DRAW_QUAD_TREE is set to true.
+
+To initialise, a general region is defined arbitrarily, this is then broken up into four equal chunks,
+provided there is more than one stop present.
+Every time there is more than one stop within one of these chunks, the chunk is split into four equal portions.
+This results in a collection of concentric squares, more closely packed around areas of high density bus stops.
+
+What this means is, when a user clicks on the screen, the program will look at the biggest(parent) node,
+see if it's possible to find a close node within its reach, attempt to give its own stop as an answer,
+and then check all of its children recursively downwards, starting from the closest children to the click location.
+What this allows is for the program to only bother checking applicable quads for matches,
+and thus checking even fewer actual points for a closest match. This will quickly give the closest stop, without fail.

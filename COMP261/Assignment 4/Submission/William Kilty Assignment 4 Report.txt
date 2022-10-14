@@ -1,0 +1,47 @@
+Comp 261
+Assignment 4
+William Kilty
+
+I believe I have achieved almost all the tasks set out in the handout,
+and have cross referenced with the mark sheet supplied.
+Everything from stage 1 to 4 is present, except for checking nested scope.
+
+My program parses text into a format which can be run by the robogame program.
+It also prints out the parsed text into a standard format with correct indentation and spacing.
+
+____________________________________________________________
+
+My program performs correctly in all cases with every stage I attempted. The only time it gets finnicky is with spacing on operators
+and comparitors in the challenge program. var1+var2 doesn't work as it is read as "var1+var2" instead of "var1" + "var2".
+To get around this you just have to make sure you write your spacing correctly in programs. It's good practice coding anyway.
+To properly fix this I'd need to change the scanner delimiter to account for all the new opperators.
+
+____________________________________________________________
+
+I tested my program through lots of debugging output text. Printing what the program was doing at each step of the parsing
+to make sure everything it did made sense and gave back what I'd put in. Most of this debugging text was removed as it 
+generally clutters up the screen. The test cases I used for stage 4 are as follows:
+
+
+S4_full.txt
+
+$Add = 1 + 15;
+$Sub = 64 - 19;
+$Mul = 8 * 8;
+$Div = 16 / (4 + (barrelLR(numBarrels - numBarrels)));
+if (1 == 1 || (true && ! false)) {
+	while ((4 >= 4) && 4 > 4) {
+		turnL;
+	}
+	move(5);
+}
+
+
+S4_simple.txt
+
+$Add = 1 + 15;
+
+
+
+In the end, I think I've sufficiently tested enough to say I'm confident there aren't any agregious bugs and I'm fairly certain
+it does what it sets out to do correctly.
