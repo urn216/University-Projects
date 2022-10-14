@@ -1,0 +1,7 @@
+Hi Tulasi,
+
+Due to the highly parellel nature
+This project mostly comprises "Boiler Plate" code that I wrote for a personal project.
+
+I spent far to long just getting things to compile for it to not work now.
+g++ -I./include src/*.c* -L./ -lglfw3

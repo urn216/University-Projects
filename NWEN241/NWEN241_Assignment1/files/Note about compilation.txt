@@ -1,0 +1,11 @@
+NWEN 241
+Assignment 1
+William Kilty
+
+Everything went smoothly, except for the challenge question;
+
+Using my compiler, it did not like assigning vewing_buffer[rows][cols] with non constant array sizes. To get around this, I used a fixed size of [8][11].
+This should work the same for questions in the format of the examples provided, but in case of any other array size, simply replace 8 with rows and 11 with cols
+I spent a long time googling and asking people, I tried gcc on another's computer, nothing allowed me to compile. This was the best I could do. I'm very sorry.
+
+In the event I've reverted the change for submission, this may explain away some weird behavior. I was unable to test adequately.
