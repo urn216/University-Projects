@@ -1,0 +1,16 @@
+GT0N
+Items: [6*( W: 11, V: 73), 6*( W: 7, V: 66), 14*( W: 9, V: 31), 2*( W: 5, V: 79), 13*( W: 10, V: 5), 3*( W: 8, V: 89)]
+Number of items: 6
+Number of instances: 44
+Weight limit: 80
+
+
+Best Value: 828
+
+Bag Contents: 
+ - Item 4: 2*( W: 5, V: 79)
+ - Item 6: 3*( W: 8, V: 89)
+ - Item 2: 5*( W: 7, V: 66)
+ - Item 1: 1*( W: 11, V: 73)
+ - Item 3: 0*( W: 9, V: 31)
+ - Item 5: 0*( W: 10, V: 5)

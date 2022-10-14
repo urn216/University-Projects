@@ -1,0 +1,113 @@
+
+Tree:
+~~~~~~~~~
+
+ASCITES = True
+|   SPIDERS = True
+|   |   VARICES = True
+|   |   |   STEROID = True
+|   |   |   |   Class live, prob = 1.0
+|   |   |   STEROID = False
+|   |   |   |   SPLEENPALPABLE = True
+|   |   |   |   |   FIRMLIVER = True
+|   |   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   |   FIRMLIVER = False
+|   |   |   |   |   |   BIGLIVER = True
+|   |   |   |   |   |   |   SGOT = True
+|   |   |   |   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   |   |   |   SGOT = False
+|   |   |   |   |   |   |   |   FEMALE = True
+|   |   |   |   |   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   |   |   |   |   FEMALE = False
+|   |   |   |   |   |   |   |   |   ANOREXIA = True
+|   |   |   |   |   |   |   |   |   |   Class die, prob = 1.0
+|   |   |   |   |   |   |   |   |   ANOREXIA = False
+|   |   |   |   |   |   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   |   |   BIGLIVER = False
+|   |   |   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   SPLEENPALPABLE = False
+|   |   |   |   |   ANOREXIA = True
+|   |   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   |   ANOREXIA = False
+|   |   |   |   |   |   Class die, prob = 1.0
+|   |   VARICES = False
+|   |   |   Class die, prob = 1.0
+|   SPIDERS = False
+|   |   FIRMLIVER = True
+|   |   |   ANOREXIA = True
+|   |   |   |   SGOT = True
+|   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   SGOT = False
+|   |   |   |   |   Class die, prob = 1.0
+|   |   |   ANOREXIA = False
+|   |   |   |   Class live, prob = 1.0
+|   |   FIRMLIVER = False
+|   |   |   SGOT = True
+|   |   |   |   BIGLIVER = True
+|   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   BIGLIVER = False
+|   |   |   |   |   Class die, prob = 1.0
+|   |   |   SGOT = False
+|   |   |   |   Class live, prob = 1.0
+ASCITES = False
+|   BIGLIVER = True
+|   |   VARICES = True
+|   |   |   FIRMLIVER = True
+|   |   |   |   STEROID = True
+|   |   |   |   |   Class die, prob = 1.0
+|   |   |   |   STEROID = False
+|   |   |   |   |   BILIRUBIN = True
+|   |   |   |   |   |   Class live, prob = 1.0
+|   |   |   |   |   BILIRUBIN = False
+|   |   |   |   |   |   Class die, prob = 1.0
+|   |   |   FIRMLIVER = False
+|   |   |   |   Class live, prob = 1.0
+|   |   VARICES = False
+|   |   |   Class die, prob = 1.0
+|   BIGLIVER = False
+|   |   Class live, prob = 1.0
+
+Testing:
+~~~~~~~~~
+
+Class die, prob = 1.0, Actual: { live true true false true false true true true true false false true false true false true }
+Class live, prob = 1.0, Actual: { die false false false true false false false true true false false true false true false true }
+Class live, prob = 1.0, Actual: { live false false false true false false false true true true false false true true true true }
+Class live, prob = 1.0, Actual: { live false false true true false false true true true true true true true false true false }
+Class live, prob = 1.0, Actual: { live false false false true false false false false false true false true false true false true }
+Class live, prob = 1.0, Actual: { live false false false true true true true true true true true true true false false false }
+Class live, prob = 1.0, Actual: { die false false true true false true true true false false false true false true true true }
+Class live, prob = 1.0, Actual: { live false false true false true true true true true true true true true false false false }
+Class live, prob = 1.0, Actual: { live false false true true true true true true true true true true true false false true }
+Class live, prob = 1.0, Actual: { live false false false true false true true true false false true true true true false false }
+Class live, prob = 1.0, Actual: { live false false true false true true true true true true true true true true false true }
+Class live, prob = 1.0, Actual: { live false false true true true true true true false true false true false true true true }
+Class live, prob = 1.0, Actual: { live false false true true false true true true true true true true true false false false }
+Class live, prob = 1.0, Actual: { live false false false true false false true true true true true true true true false false }
+Class live, prob = 1.0, Actual: { die true false false true false false true true true true false false true true false true }
+Class live, prob = 1.0, Actual: { die true false false true false false true true false false false true true true true true }
+Class live, prob = 1.0, Actual: { live false false false true true true true true true false true true true false false false }
+Class live, prob = 1.0, Actual: { live false false false false false false false false false true true true true false false true }
+Class die, prob = 1.0, Actual: { die false false false false false false true true true true false true true false false true }
+Class live, prob = 1.0, Actual: { live true false true true false true true true true true true true true true false false }
+Class live, prob = 1.0, Actual: { live true false false false true true true true true true true true true false false false }
+Class die, prob = 1.0, Actual: { live true true false true false true true false false false false true true false true true }
+Class live, prob = 1.0, Actual: { live true false true true true true true true true true true true true true false true }
+Class live, prob = 1.0, Actual: { live false false true true true true true true true true true true true true true false }
+Class live, prob = 1.0, Actual: { live true false false true false true true true true true true true true false false false }
+
+DT Tests Accuracy: 76.00%
+Baseline Accuracy: 80.00%
+
+DT Run 0 Accuracy: 86.67%
+DT Run 1 Accuracy: 80.00%
+DT Run 2 Accuracy: 66.67%
+DT Run 3 Accuracy: 70.00%
+DT Run 4 Accuracy: 80.00%
+DT Run 5 Accuracy: 66.67%
+DT Run 6 Accuracy: 80.00%
+DT Run 7 Accuracy: 76.67%
+DT Run 8 Accuracy: 66.67%
+DT Run 9 Accuracy: 73.33%
+
+Average accuracy from 10-fold cross-validation: 74.67%
